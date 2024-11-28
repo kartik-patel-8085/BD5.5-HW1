@@ -2,7 +2,7 @@ let express = require('express');
 let { book } = require('./models/book.model');
 let { sequelize } = require('./lib/index');
 let { user } = require('./models/user.model');
-// let { like } = require('./models/like.model');
+let { like } = require('./models/like.model');
 
 let app = express();
 app.use(express.json());

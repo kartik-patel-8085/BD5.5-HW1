@@ -1,26 +1,25 @@
-let { DataTypes, sequelize } = require('../lib');
-let user = require('./user.model');
-let book = require('./book.model');
+let { DataTypes, sequelize } = require("../lib");
+let { user } = require("./user.model");
+let { book } = require("./book.model");
 
-let like = sequelize.define('like', {
+let like = sequelize.define("like", {
   userId: {
     type: DataTypes.INTEGER,
     references: {
-      model: book,
-      key: 'id',
+      model: user,
+      key: "id",
     },
   },
   bookId: {
     type: DataTypes.INTEGER,
     references: {
       model: book,
-      key: 'id',
+      key: "id",
     },
   },
 });
 
 user.belongsToMany(book, { through: like });
-
-book.belongToMany(user, { through: like });
+book.belongsToMany(user, { through: like });
 
 module.exports = { like };
